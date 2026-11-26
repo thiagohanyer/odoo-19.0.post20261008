@@ -57,10 +57,33 @@
         </field>
     </record>
 
-    <record id="prestamo_action" model="ir.actions.act_window">
+        <!-- BÚSQUEDA: campos, filtros y agrupaciones -->
+    <record id="prestamo_view_search" model="ir.ui.view">
+        <field name="name">biblioteca.prestamo.search</field>
+        <field name="model">biblioteca.prestamo</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="libro_id"/>
+                <field name="socio_id"/>
+                <filter name="filtro_prestados" string="Prestados"
+                        domain="[('estado', '=', 'prestado')]"/>
+                <filter name="filtro_devueltos" string="Devueltos"
+                        domain="[('estado', '=', 'devuelto')]"/>
+                <separator/>
+                <filter name="agrupar_socio" string="Socio"
+                        context="{'group_by': 'socio_id'}"/>
+                <filter name="agrupar_estado" string="Estado"
+                        context="{'group_by': 'estado'}"/>
+            </search>
+        </field>
+    </record>
+
+        <record id="prestamo_action" model="ir.actions.act_window">
         <field name="name">Préstamos</field>
         <field name="res_model">biblioteca.prestamo</field>
         <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_filtro_prestados': 1}</field>
     </record>
 
     <menuitem id="menu_prestamos" name="Préstamos"
