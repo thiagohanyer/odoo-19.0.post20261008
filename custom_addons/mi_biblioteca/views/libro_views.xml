@@ -16,7 +16,7 @@
         </field>
     </record>
 
-    <!-- FORMULARIO de un libro, en dos columnas -->
+    <!-- FORMULARIO de un libro, con pestañas -->
     <record id="libro_view_form" model="ir.ui.view">
         <field name="name">biblioteca.libro.form</field>
         <field name="model">biblioteca.libro</field>
@@ -34,9 +34,19 @@
                             <field name="paginas"/>
                             <field name="disponible"/>
                             <field name="genero"/>
-                            <field name="tema_ids" widget="many2many_tags"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Temas" name="temas">
+                            <field name="tema_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Préstamos" name="prestamos">
+                            <group>
+                                <field name="num_prestamos"/>
+                            </group>
+                            <field name="prestamo_ids" readonly="1"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

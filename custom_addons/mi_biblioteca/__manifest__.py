@@ -5,6 +5,6 @@
  'author': 'Thiago', # pon aquí tu nombre
  'license': 'LGPL-3', # licencia (evita un aviso)
  'depends': ['base'], # necesita el núcleo de Odoo
- 'data': [ 'security/ir.model.access.csv','data/tema_data.xml','views/libro_views.xml','views/tema_views.xml',], # archivos a cargar (aún ninguno)
+ 'data': [ 'security/ir.model.access.csv','data/tema_data.xml','views/libro_views.xml','views/tema_views.xml','views/prestamo_views.xml',], # archivos a cargar (aún ninguno)
  'application': True, # es una aplicación (tendrá icono)
 }
