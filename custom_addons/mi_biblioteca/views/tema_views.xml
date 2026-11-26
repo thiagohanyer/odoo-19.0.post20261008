@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tema_view_list" model="ir.ui.view">
+        <field name="name">biblioteca.tema.list</field>
+        <field name="model">biblioteca.tema</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="tema_action" model="ir.actions.act_window">
+        <field name="name">Temas</field>
+        <field name="res_model">biblioteca.tema</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem id="menu_configuracion" name="Configuración"
+              parent="menu_biblioteca" sequence="90"/>
+    <menuitem id="menu_temas" name="Temas"
+              parent="menu_configuracion" action="tema_action" sequence="10"/>
+</odoo>

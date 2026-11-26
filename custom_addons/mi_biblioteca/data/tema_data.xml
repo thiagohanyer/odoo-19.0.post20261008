@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tema_redes" model="biblioteca.tema">
+        <field name="name">Redes</field>
+    </record>
+    <record id="tema_bases_datos" model="biblioteca.tema">
+        <field name="name">Bases de datos</field>
+    </record>
+    <record id="tema_programacion" model="biblioteca.tema">
+        <field name="name">Programación</field>
+    </record>
+</odoo>

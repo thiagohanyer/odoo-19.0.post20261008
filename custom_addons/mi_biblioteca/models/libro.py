@@ -12,3 +12,5 @@ class Libro(models.Model):
     disponible = fields.Boolean(string='Disponible', default=True)
     paginas = fields.Integer(string='Número de páginas')
     genero = fields.Selection([('novela', 'Novela'),('tecnico', 'Técnico'),('ensayo', 'Ensayo'),], string='Género')
+    # Relaciones
+    tema_ids = fields.Many2many('biblioteca.tema', string='Temas')

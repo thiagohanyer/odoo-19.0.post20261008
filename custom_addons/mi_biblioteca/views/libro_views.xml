@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    <!-- LISTA de libros -->
     <record id="libro_view_list" model="ir.ui.view">
         <field name="name">biblioteca.libro.list</field>
         <field name="model">biblioteca.libro</field>
@@ -8,7 +8,7 @@
             <list>
                 <field name="name"/>
                 <field name="autor"/>
-                <field name="isbn"/>
+                <field name="tema_ids" widget="many2many_tags"/>
                 <field name="paginas"/>
                 <field name="disponible"/>
                 <field name="genero"/>
@@ -16,6 +16,7 @@
         </field>
     </record>
 
+    <!-- FORMULARIO de un libro, en dos columnas -->
     <record id="libro_view_form" model="ir.ui.view">
         <field name="name">biblioteca.libro.form</field>
         <field name="model">biblioteca.libro</field>
@@ -23,27 +24,33 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="autor"/>
-                        <field name="isbn"/>
-                        <field name="fecha_publicacion"/>
-                        <field name="paginas"/>
-                        <field name="disponible"/>
-                        <field name="genero"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="autor"/>
+                            <field name="isbn"/>
+                        </group>
+                        <group>
+                            <field name="fecha_publicacion"/>
+                            <field name="paginas"/>
+                            <field name="disponible"/>
+                            <field name="genero"/>
+                            <field name="tema_ids" widget="many2many_tags"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
+    <!-- ACCIÓN -->
     <record id="libro_action" model="ir.actions.act_window">
         <field name="name">Libros</field>
         <field name="res_model">biblioteca.libro</field>
         <field name="view_mode">list,form</field>
     </record>
 
+    <!-- MENÚS -->
     <menuitem id="menu_biblioteca" name="Biblioteca"/>
     <menuitem id="menu_libros" name="Libros"
-              parent="menu_biblioteca" action="libro_action"/>
-
+              parent="menu_biblioteca" action="libro_action" sequence="10"/>
 </odoo>
