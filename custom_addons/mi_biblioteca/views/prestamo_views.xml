@@ -1,32 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- LISTA de préstamos: en rojo los retrasados, en gris los devueltos -->
     <record id="prestamo_view_list" model="ir.ui.view">
         <field name="name">biblioteca.prestamo.list</field>
         <field name="model">biblioteca.prestamo</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-danger="retrasado"
+                  decoration-muted="estado == 'devuelto'">
                 <field name="name"/>
                 <field name="libro_id"/>
                 <field name="socio_id"/>
                 <field name="fecha_prestamo"/>
+                <field name="fecha_prevista"/>
                 <field name="estado"/>
+                <field name="retrasado"/>
             </list>
         </field>
     </record>
 
+    <!-- FORMULARIO con barra de estado y botones -->
     <record id="prestamo_view_form" model="ir.ui.view">
         <field name="name">biblioteca.prestamo.form</field>
         <field name="model">biblioteca.prestamo</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_prestar" type="object" string="Prestar"
+                            class="btn-primary" invisible="estado != 'borrador'"/>
+                    <button name="action_devolver" type="object" string="Devolver"
+                            class="btn-primary" invisible="estado != 'prestado'"/>
+                    <field name="estado" widget="statusbar"/>
+                </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
                     <group>
-                        <field name="name"/>
-                        <field name="libro_id"/>
-                        <field name="socio_id"/>
-                        <field name="fecha_prestamo"/>
-                        <field name="dias"/>
-                        <field name="estado"/>
+                        <group>
+                            <field name="libro_id"
+                                   readonly="estado != 'borrador'"/>
+                            <field name="socio_id"
+                                   readonly="estado != 'borrador'"/>
+                        </group>
+                        <group>
+                            <field name="fecha_prestamo"
+                                   readonly="estado != 'borrador'"/>
+                            <field name="dias"
+                                   readonly="estado != 'borrador'"/>
+                            <field name="fecha_prevista"/>
+                            <field name="fecha_devolucion"/>
+                            <field name="retrasado"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
