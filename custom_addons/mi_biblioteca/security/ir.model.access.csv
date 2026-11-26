@@ -1,4 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_libro_user,libro.user,model_biblioteca_libro,base.group_user,1,1,1,1
-access_tema_user,tema.user,model_biblioteca_tema,base.group_user,1,1,1,1
-access_prestamo_user,prestamo.user,model_biblioteca_prestamo,base.group_user,1,1,1,1
+access_libro_user,libro.user,model_biblioteca_libro,base.group_user,1,1,0,0
+access_libro_bibliotecario,libro.bibliotecario,model_biblioteca_libro,group_bibliotecario,1,1,1,1
+access_tema_user,tema.user,model_biblioteca_tema,base.group_user,1,0,0,0
+access_tema_bibliotecario,tema.bibliotecario,model_biblioteca_tema,group_bibliotecario,1,1,1,1
+access_prestamo_user,prestamo.user,model_biblioteca_prestamo,base.group_user,1,1,1,0
+access_prestamo_bibliotecario,prestamo.bibliotecario,model_biblioteca_prestamo,group_bibliotecario,1,1,1,1
